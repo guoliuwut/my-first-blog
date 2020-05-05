@@ -25,7 +25,10 @@ SECRET_KEY = '(2o^458wd0@c!=ft1acf&0nc$n4=dgvg39g6&l4^s7kuwxlnpa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'hugoliu2.pythonanywhere.com',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -40,8 +43,11 @@ INSTALLED_APPS = [
     'blog',
 ]
 
+# 加入whitenoise 配置之后, 在wsgi中, 就不能从whitenoise中
+# import 任何东西. 直接使用就可以了
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
